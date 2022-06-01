@@ -1,0 +1,16 @@
+# Folders
+node_modules/
+public/*
+!public/locales
+resources/
+
+# Files
+.eslintignore
+.prettierignore
+.gitignore
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+Gemfile
+.buckconfig
+.watchmanconfig

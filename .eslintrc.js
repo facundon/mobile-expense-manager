@@ -1,0 +1,36 @@
+module.exports = {
+   root: true,
+   extends: ['@react-native-community', 'plugin:react-hooks/recommended', 'plugin:prettier/recommended'],
+   parser: '@typescript-eslint/parser',
+   plugins: ['@typescript-eslint', 'react-hooks', 'prettier'],
+   overrides: [
+      {
+         files: ['*.ts', '*.tsx'],
+         rules: {
+            '@typescript-eslint/no-shadow': ['error'],
+            'no-shadow': 'off',
+            'no-undef': 'off',
+         },
+      },
+   ],
+   rules: {
+      'prettier/prettier': 2,
+      'prefer-template': 2,
+      'no-useless-rename': 2,
+      'no-else-return': [2, {allowElseIf: false}],
+      'quote-props': [2, 'as-needed'],
+      'class-methods-use-this': 1,
+      'prefer-destructuring': 0,
+      'no-use-before-define': 0,
+      '@typescript-eslint/no-use-before-define': 2,
+      'no-unused-vars': 0,
+      '@typescript-eslint/no-unused-vars': 1,
+      'no-shadow': 0,
+      '@typescript-eslint/no-shadow': 2,
+      '@typescript-eslint/no-useless-constructor': 2,
+      '@typescript-eslint/consistent-type-definitions': [2, 'interface'],
+      '@typescript-eslint/explicit-function-return-type': 0,
+      '@typescript-eslint/no-unsafe-return': 0,
+      '@typescript-eslint/member-ordering': 2,
+   },
+}

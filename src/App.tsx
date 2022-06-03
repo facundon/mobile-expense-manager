@@ -11,6 +11,7 @@
 import React from 'react'
 import { SafeAreaView, StatusBar, StyleSheet } from 'react-native'
 import { AddExpenseView } from './views/addExpense'
+import Toast from 'react-native-toast-message'
 
 const style = StyleSheet.create({ root: { flex: 1, backgroundColor: 'black' } })
 
@@ -19,6 +20,7 @@ const App = () => {
       <SafeAreaView style={style.root}>
          <StatusBar barStyle='dark-content' />
          <AddExpenseView />
+         <Toast />
       </SafeAreaView>
    )
 }

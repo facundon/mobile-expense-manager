@@ -4,6 +4,7 @@ import { Input } from '../../shared/ui/input'
 import { styles } from './styles'
 import { toTitleCase } from '../../shared/utils/string'
 import Picker from 'react-native-picker-select'
+import Toast from 'react-native-toast-message'
 
 interface Expense {
    value: number
@@ -15,12 +16,14 @@ const orderedSteps: readonly (keyof Expense)[] = ['value', 'description', 'categ
 const expenseCategories = ['comida', 'gustos', 'movilidad', 'otros', 'salud'] as const
 type ExpenseCategory = typeof expenseCategories[number]
 
+const defaultExpenseValue: Expense = { category: '', description: '', value: 0 }
+
 export const AddExpenseView: React.FC = () => {
    const valueRef = useRef<TextInput>(null)
    const descRef = useRef<TextInput>(null)
    const catRef = useRef<Picker>(null)
 
-   const [expense, setExpense] = useState<Expense>({ category: '', description: '', value: 0 })
+   const [expense, setExpense] = useState<Expense>(defaultExpenseValue)
    const [editing, setEditing] = useState<keyof Expense>('value')
 
    function addToDone(what: keyof Expense) {
@@ -35,7 +38,11 @@ export const AddExpenseView: React.FC = () => {
       setEditing(what)
    }
 
-   function handleSubmit() {}
+   function handleSubmit() {
+      Toast.show({ text1: 'Gasto agregado!', text2: `$${expense.value} en ${expense.description}` })
+      setExpense(defaultExpenseValue)
+      valueRef.current?.focus()
+   }
 
    return (
       <View style={styles.container}>

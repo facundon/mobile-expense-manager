@@ -14,7 +14,8 @@
       "@react-native-picker/picker": "^2.4.1",
       "react": "17.0.2",
       "react-native": "0.68.2",
-      "react-native-picker-select": "^8.0.4"
+      "react-native-picker-select": "^8.0.4",
+      "react-native-toast-message": "^2.1.5"
    },
    "devDependencies": {
       "@babel/core": "^7.12.9",

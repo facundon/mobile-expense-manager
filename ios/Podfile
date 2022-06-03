@@ -4,6 +4,7 @@ require_relative '../node_modules/@react-native-community/cli-platform-ios/nativ
 platform :ios, '11.0'
 install! 'cocoapods', :deterministic_uuids => false
 $FirebaseSDKVersion = '8.15.0'
+pod 'RNCPicker', :path => './ReactComponent/node_modules/@react-native-picker/picker'
 
 target 'expenseManager' do
   config = use_native_modules!

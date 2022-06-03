@@ -17,7 +17,7 @@ module.exports = {
       'prettier/prettier': 2,
       'prefer-template': 2,
       'no-useless-rename': 2,
-      'no-else-return': [2, {allowElseIf: false}],
+      'no-else-return': [2, { allowElseIf: false }],
       'quote-props': [2, 'as-needed'],
       'class-methods-use-this': 1,
       'prefer-destructuring': 0,

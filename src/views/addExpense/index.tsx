@@ -3,6 +3,8 @@ import { Button, InputAccessoryView, LayoutAnimation, Text, TextInput, View } fr
 import { Input } from '../../shared/ui/input'
 import { styles } from './styles'
 import { toTitleCase } from '../../shared/utils/string'
+import { FirestoreCollections } from '../../config'
+import firestore from '@react-native-firebase/firestore'
 import Picker from 'react-native-picker-select'
 import Toast from 'react-native-toast-message'
 
@@ -38,10 +40,20 @@ export const AddExpenseView: React.FC = () => {
       setEditing(what)
    }
 
-   function handleSubmit() {
-      Toast.show({ text1: 'Gasto agregado!', text2: `$${expense.value} en ${expense.description}` })
-      setExpense(defaultExpenseValue)
-      valueRef.current?.focus()
+   async function handleSubmit() {
+      try {
+         await firestore().collection(FirestoreCollections.expenses).add(expense)
+         Toast.show({ text1: 'Gasto agregado!', text2: `$${expense.value} en ${expense.description}` })
+         setExpense(defaultExpenseValue)
+         valueRef.current?.focus()
+      } catch (err) {
+         catRef.current?.togglePicker()
+         Toast.show({
+            text1: 'Hubo un error al guardar el gasto',
+            text2: err instanceof Error ? err.message : '',
+            type: 'error',
+         })
+      }
    }
 
    return (
